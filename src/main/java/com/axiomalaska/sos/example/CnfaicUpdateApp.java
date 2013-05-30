@@ -9,6 +9,7 @@ import com.axiomalaska.sos.exception.ObservationRetrievalException;
 import com.axiomalaska.sos.exception.SosCommunicationException;
 import com.axiomalaska.sos.exception.SosInjectorConfigurationException;
 import com.axiomalaska.sos.exception.StationCreationException;
+import com.axiomalaska.sos.exception.UnsupportedGeometryTypeException;
 import com.axiomalaska.sos.exception.UnsupportedSosAssetTypeException;
 
 public class CnfaicUpdateApp {
@@ -16,7 +17,7 @@ public class CnfaicUpdateApp {
     
     public static void main(String[] args) throws InvalidObservationCollectionException,
         ObservationRetrievalException, UnsupportedSosAssetTypeException, StationCreationException,
-        SosCommunicationException{
+        SosCommunicationException, UnsupportedGeometryTypeException{
         if (args.length != 1) {
             LOGGER.error("Usage: sosUrl (HTTP URL of target SOS server)");
             return;

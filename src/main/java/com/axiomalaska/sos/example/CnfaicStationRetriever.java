@@ -13,12 +13,12 @@ import com.axiomalaska.phenomena.UnitCreationException;
 import com.axiomalaska.sos.StationRetriever;
 import com.axiomalaska.sos.data.DocumentMemberImp;
 import com.axiomalaska.sos.data.HistoryEventImp;
-import com.axiomalaska.sos.data.Location;
 import com.axiomalaska.sos.data.SosNetwork;
 import com.axiomalaska.sos.data.SosSensor;
 import com.axiomalaska.sos.data.SosSource;
 import com.axiomalaska.sos.data.SosStation;
 import com.axiomalaska.sos.exception.StationCreationException;
+import com.axiomalaska.sos.tools.GeomHelper;
 
 public class CnfaicStationRetriever implements StationRetriever {
 
@@ -117,11 +117,11 @@ public class CnfaicStationRetriever implements StationRetriever {
 	
 	private SosStation createArcticValley(SosSource source) throws UnitCreationException{
 		SosStation arcticValley = new SosStation();
-		arcticValley.setAsset(new StationAsset(STATION_AUTHORITY,"actic_valley"));
+		arcticValley.setAsset(new StationAsset(STATION_AUTHORITY,"arctic_valley"));
 		arcticValley.setFeatureOfInterestName("At station:Arctic Valley Ridge of source: CNFAIC");
-		arcticValley.setLocation(new Location(61.24, -149.51));
+		arcticValley.setLocation(GeomHelper.createLatLngPoint(61.24, -149.51));
 		arcticValley.setSource(source);
-		arcticValley.setSponsor("AlyeskaResort, Bear Tooth, Broken Tooth Brewing");
+		arcticValley.setSponsor("Alyeska Resort, Bear Tooth, Broken Tooth Brewing");
 		arcticValley.setSensors(getSensors(arcticValley));
 		arcticValley.setLongName("http://www.cnfaic.org/wx/wx_arctic.php");
 		arcticValley.setShortName("Arctic Valley Ridge");
@@ -141,9 +141,9 @@ public class CnfaicStationRetriever implements StationRetriever {
 		SosStation marmot = new SosStation();
 		marmot.setAsset(new StationAsset(STATION_AUTHORITY,"marmot"));
 		marmot.setFeatureOfInterestName("At station: Marmot Ridge in Hatcher Pass of source: CNFAIC");
-		marmot.setLocation(new Location(61.7804, -149.2582));
+		marmot.setLocation(GeomHelper.createLatLngPoint(61.7804, -149.2582));
 		marmot.setSource(source);
-		marmot.setSponsor("AlyeskaResort, Bear Tooth, Broken Tooth Brewing");
+		marmot.setSponsor("Alyeska Resort, Bear Tooth, Broken Tooth Brewing");
 		marmot.setSensors(getSensors(marmot));
 		marmot.setLongName("http://www.cnfaic.org/wx/wx_marmot.php");
 		marmot.setShortName("Marmot Ridge in Hatcher Pass");
@@ -178,10 +178,9 @@ public class CnfaicStationRetriever implements StationRetriever {
 		fresnoRidge.setAsset(new StationAsset(STATION_AUTHORITY,"fresno2"));
 		fresnoRidge
 				.setFeatureOfInterestName("At station: Fresno Ridge (Near Summit Lake) of source: CNFAIC");
-		Location location = new Location(60.6869, -149.5095);
-		fresnoRidge.setLocation(location);
+		fresnoRidge.setLocation(GeomHelper.createLatLngPoint(60.6869, -149.5095));
 		fresnoRidge.setSource(source);
-		fresnoRidge.setSponsor("AlyeskaResort, Bear Tooth, Broken Tooth Brewing");
+		fresnoRidge.setSponsor("Alyeska Resort, Bear Tooth, Broken Tooth Brewing");
 		fresnoRidge.setSensors(getSensors(fresnoRidge));
 		fresnoRidge.setLongName("http://www.cnfaic.org/wx/wx_summit.php");
 		fresnoRidge.setShortName("Fresno Ridge (Near Summit Lake)");
@@ -196,9 +195,8 @@ public class CnfaicStationRetriever implements StationRetriever {
 		SosStation sunburstRidge = new SosStation();
 		sunburstRidge.setAsset(new StationAsset(STATION_AUTHORITY,"sunburst"));
 		sunburstRidge
-				.setFeatureOfInterestName("At station: Sunburst Ridge of source: CNFAIC");
-		Location location = new Location(60.7559, -149.1772);
-		sunburstRidge.setLocation(location);
+				.setFeatureOfInterestName("At station: Sunburst Ridge of source: CNFAIC");		
+		sunburstRidge.setLocation(GeomHelper.createLatLngPoint(60.7559, -149.1772));
 		sunburstRidge.setSource(source);
 		sunburstRidge.setSensors(getSensors(sunburstRidge));
 		sunburstRidge.setLongName("http://www.cnfaic.org/wx/wx_sunburst.php");
@@ -229,10 +227,10 @@ public class CnfaicStationRetriever implements StationRetriever {
 		seattleRidge.setAsset(new StationAsset(STATION_AUTHORITY,"seattle"));
 		seattleRidge
 				.setFeatureOfInterestName("At station: Seattle Ridge of source: CNFAIC");
-		seattleRidge.setLocation(new Location(60.8338, -149.1593));
+		seattleRidge.setLocation(GeomHelper.createLatLngPoint(60.8338, -149.1593));
 		seattleRidge.setSource(source);
 		seattleRidge.setSensors(getSensors(seattleRidge));
-		seattleRidge.setSponsor("AlyeskaResort, Bear Tooth, Broken Tooth Brewing");
+		seattleRidge.setSponsor("Alyeska Resort, Bear Tooth, Broken Tooth Brewing");
 		seattleRidge.setLongName("http://www.cnfaic.org/wx/wx_seattle.php");
 		seattleRidge.setShortName("Seattle Ridge");
 		seattleRidge.setPlatformType("FIXED MET STATION");

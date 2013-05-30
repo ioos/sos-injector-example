@@ -92,6 +92,7 @@ public class CnfaicObservationRetriever implements ObservationRetriever {
         ObservationCollection observationCollection = new ObservationCollection();        
         observationCollection.setSensor(sensor);
         observationCollection.setPhenomenon(phenomenon);
+        observationCollection.setGeometry(sensor.getLocation());
 
 		while(matcher.find()){ 
 			DateTime dateTime = akTimeFormatter.parseDateTime(matcher.group(DATE_INDEX));
