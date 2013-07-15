@@ -10,10 +10,10 @@ public class CnfaicSosInjectorFactory {
 	// Public Members
 	// -------------------------------------------------------------------------
 		
-	public static SosInjector buildCnfaicSosInjector(String sosUrl, PublisherInfo publisherInfo)
-	        throws SosInjectorConfigurationException{
+	public static SosInjector buildCnfaicSosInjector(String sosUrl, String authorizationToken,
+	            PublisherInfo publisherInfo) throws SosInjectorConfigurationException{
 
-		SosInjector sosInjector = new SosInjector("CNFAIC SOS Injector", sosUrl, publisherInfo,
+		SosInjector sosInjector = new SosInjector("CNFAIC SOS Injector", sosUrl, authorizationToken, publisherInfo,
 		        new CnfaicStationRetriever(), new CnfaicObservationRetriever(), null );
 		
 		return sosInjector;

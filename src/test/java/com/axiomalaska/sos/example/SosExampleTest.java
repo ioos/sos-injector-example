@@ -24,7 +24,7 @@ public class SosExampleTest {
         pi.setName("test");
         pi.setWebAddress("http://test.com");
 
-        SosInjector sosInjector = CnfaicSosInjectorFactory.buildCnfaicSosInjector("http://test.com", pi);
+        SosInjector sosInjector = CnfaicSosInjectorFactory.buildCnfaicSosInjector("http://test.com", null, pi);
         assertNotNull(sosInjector);
     }
 

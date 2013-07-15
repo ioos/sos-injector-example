@@ -18,12 +18,13 @@ public class CnfaicUpdateApp {
     public static void main(String[] args) throws InvalidObservationCollectionException,
         ObservationRetrievalException, UnsupportedSosAssetTypeException, StationCreationException,
         SosCommunicationException, UnsupportedGeometryTypeException{
-        if (args.length != 1) {
-            LOGGER.error("Usage: sosUrl (HTTP URL of target SOS server)");
+        if (args.length < 1 || args.length > 2) {
+            LOGGER.error("Usage: sosUrl (HTTP URL of target SOS server) [authorization token]");
             return;
         }
 
         String sosUrl = args[0];
+        String authorizationToken = args.length >= 2 ? args[1] : null;
         
         PublisherInfo publisherInfo = new PublisherInfo();
         publisherInfo.setCode("example");
@@ -34,7 +35,7 @@ public class CnfaicUpdateApp {
         
         SosInjector sosInjector = null;
         try {
-            sosInjector = CnfaicSosInjectorFactory.buildCnfaicSosInjector(sosUrl, publisherInfo);
+            sosInjector = CnfaicSosInjectorFactory.buildCnfaicSosInjector(sosUrl, authorizationToken, publisherInfo);
         } catch (SosInjectorConfigurationException e) {
             LOGGER.error("Error configuring CNFAIC SosInjector", e);
         }
