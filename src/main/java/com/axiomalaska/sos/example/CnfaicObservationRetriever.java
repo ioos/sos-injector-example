@@ -14,9 +14,14 @@ import org.joda.time.Years;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
+import ucar.units.ConversionException;
+import ucar.units.SI;
+
+import com.axiomalaska.phenomena.CustomUnits;
 import com.axiomalaska.phenomena.Phenomena;
 import com.axiomalaska.phenomena.Phenomenon;
 import com.axiomalaska.phenomena.UnitCreationException;
+import com.axiomalaska.phenomena.UnitResolver;
 import com.axiomalaska.sos.ObservationRetriever;
 import com.axiomalaska.sos.data.ObservationCollection;
 import com.axiomalaska.sos.data.SosSensor;
@@ -96,23 +101,37 @@ public class CnfaicObservationRetriever implements ObservationRetriever {
 
 		while(matcher.find()){ 
 			DateTime dateTime = akTimeFormatter.parseDateTime(matcher.group(DATE_INDEX));
-			if (dateTime.isAfter(startDate) && !observationCollection.hasObservationValue(dateTime)) {
+			if (dateTime.isAfter(startDate) && !observationCollection.hasObservationValue(dateTime)) {			    
 			    String valueString = null;
-				if (phenomenon.getId().equals(airTemperaturePhenomenon.getId())) {
-				    valueString = matcher.group(AIR_TEMPERATURE_INDEX);					
-				} else if (phenomenon.getId().equals(relativeHumidityPhenomenon.getId())) {
-				    valueString = matcher.group(RELATIVE_HUMIDITY_INDEX);				    
-				} else if (phenomenon.getId().equals(windSpeedPhenomenon.getId())) {
-				    valueString = matcher.group(WIND_SPEED_INDEX);				    
-				} else if (phenomenon.getId().equals(windfromDirectionPhenomenon.getId())) {
-				    valueString = matcher.group(WIND_DIRECTION_INDEX);				    
-				} else if (phenomenon.getId().equals(windSpeedOfGustPhenomenon.getId())) {
-				    valueString = matcher.group(WIND_GUST_INDEX);				    
-				}
-
-				if (valueString != null) {
-				    observationCollection.addObservationValue(dateTime, Double.parseDouble(valueString));
-				}
+                try {			    
+    				if (phenomenon.getId().equals(airTemperaturePhenomenon.getId())) {
+                            valueString = Double.toString(UnitResolver.instance().resolveUnit("degrees_F")
+                                    .convertTo(Double.valueOf(matcher.group(AIR_TEMPERATURE_INDEX)),
+                                            SI.DEGREE_CELSIUS));
+    				} else if (phenomenon.getId().equals(relativeHumidityPhenomenon.getId())) {
+    				    valueString = matcher.group(RELATIVE_HUMIDITY_INDEX);				    
+    				} else if (phenomenon.getId().equals(windSpeedPhenomenon.getId())) {
+                        valueString = Double.toString(UnitResolver.instance().resolveUnit("miles per hour")
+                                .convertTo(Double.valueOf(matcher.group(WIND_SPEED_INDEX)),
+                                        CustomUnits.instance().METERS_PER_SECOND));
+    				} else if (phenomenon.getId().equals(windfromDirectionPhenomenon.getId())) {
+    				    valueString = matcher.group(WIND_DIRECTION_INDEX);				    
+    				} else if (phenomenon.getId().equals(windSpeedOfGustPhenomenon.getId())) {
+                        valueString = Double.toString(UnitResolver.instance().resolveUnit("miles per hour")
+                                .convertTo(Double.valueOf(matcher.group(WIND_GUST_INDEX)),
+                                        CustomUnits.instance().METERS_PER_SECOND));
+    				}    
+                } catch (NumberFormatException e) {
+                    e.printStackTrace();
+                } catch (ConversionException e) {
+                    e.printStackTrace();
+                } catch (UnitCreationException e) {
+                    e.printStackTrace();
+                }
+                
+                if (valueString != null) {
+                    observationCollection.addObservationValue(dateTime, Double.parseDouble(valueString));
+                }                
 			}
 		}
 		
