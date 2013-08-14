@@ -2,6 +2,7 @@ package com.axiomalaska.sos.example;
 
 import org.apache.log4j.Logger;
 
+import com.axiomalaska.ioos.sos.exception.UnsupportedGeometryTypeException;
 import com.axiomalaska.sos.SosInjector;
 import com.axiomalaska.sos.data.PublisherInfo;
 import com.axiomalaska.sos.exception.InvalidObservationCollectionException;
@@ -9,7 +10,6 @@ import com.axiomalaska.sos.exception.ObservationRetrievalException;
 import com.axiomalaska.sos.exception.SosCommunicationException;
 import com.axiomalaska.sos.exception.SosInjectorConfigurationException;
 import com.axiomalaska.sos.exception.StationCreationException;
-import com.axiomalaska.sos.exception.UnsupportedGeometryTypeException;
 import com.axiomalaska.sos.exception.UnsupportedSosAssetTypeException;
 
 public class CnfaicUpdateApp {
