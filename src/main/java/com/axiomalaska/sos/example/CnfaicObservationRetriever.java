@@ -33,7 +33,8 @@ public class CnfaicObservationRetriever implements ObservationRetriever {
 	// Private Data
 	// -------------------------------------------------------------------------
     private final static Logger LOGGER = Logger.getLogger(CnfaicObservationRetriever.class);
-    private final static DateTimeZone akTime = DateTimeZone.forID("America/Anchorage");
+    //CNFAIC time is locked to AKST, even in summer!
+    private final static DateTimeZone akTime = DateTimeZone.forID("Etc/GMT+9");
     private final static DateTimeFormatter akTimeFormatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss")
             .withZone(akTime);
     
