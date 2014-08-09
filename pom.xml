@@ -58,7 +58,7 @@
     <dependency>
       <groupId>com.axiomalaska</groupId>
       <artifactId>sos-injector</artifactId>
-      <version>${project.version}</version>
+      <version>1.7.0</version>
     </dependency>
     <dependency>
       <groupId>log4j</groupId>
@@ -72,4 +72,30 @@
       <scope>test</scope>
     </dependency>    
   </dependencies>
+
+  <distributionManagement>
+    <repository>
+      <id>axiom_public_releases</id>
+      <name>Axiom Releases</name>
+      <uniqueVersion>false</uniqueVersion>
+      <url>
+        http://nexus.axiomalaska.com/nexus/content/repositories/public-releases
+      </url>
+    </repository>
+    <snapshotRepository>
+      <id>axiom_public_snapshots</id>
+      <name>Axiom Snapshots</name>
+      <uniqueVersion>false</uniqueVersion>
+      <url>
+        http://nexus.axiomalaska.com/nexus/content/repositories/public-snapshots
+      </url>
+    </snapshotRepository>
+  </distributionManagement>
+
+  <scm>
+    <connection>scm:git:https://github.com/ioos/sos-injector-example.git</connection>
+    <url>scm:git:https://github.com/ioos/sos-injector-example.git</url>
+    <developerConnection>scm:git:https://github.com/ioos/sos-injector-example.git</developerConnection>
+    <tag>HEAD</tag>
+  </scm>
 </project>
