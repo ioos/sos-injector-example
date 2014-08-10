@@ -96,4 +96,14 @@
     <developerConnection>scm:git:https://github.com/ioos/sos-injector-example.git</developerConnection>
     <tag>HEAD</tag>
   </scm>
+
+  <repositories>
+    <repository>
+      <id>axiom-public</id>
+      <url>http://nexus.axiomalaska.com/nexus/content/repositories/public</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
 </project>
