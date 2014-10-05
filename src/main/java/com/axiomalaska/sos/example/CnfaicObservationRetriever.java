@@ -20,6 +20,7 @@ import ucar.units.SI;
 import com.axiomalaska.phenomena.CustomUnits;
 import com.axiomalaska.phenomena.Phenomena;
 import com.axiomalaska.phenomena.Phenomenon;
+import com.axiomalaska.phenomena.PhenomenonImp;
 import com.axiomalaska.phenomena.UnitCreationException;
 import com.axiomalaska.phenomena.UnitResolver;
 import com.axiomalaska.sos.ObservationRetriever;
@@ -86,6 +87,13 @@ public class CnfaicObservationRetriever implements ObservationRetriever {
             nonRecoverableExceptionThrown = true;
         }
 
+        //pretend relativeHumidity doesn't have units to test unitless observations
+        PhenomenonImp relativeHumidityUnitless = new PhenomenonImp();
+        relativeHumidityUnitless.setId(relativeHumidityPhenomenon.getId());
+        relativeHumidityUnitless.setName(relativeHumidityPhenomenon.getName());
+        relativeHumidityUnitless.setTag(relativeHumidityPhenomenon.getTag());
+        relativeHumidityUnitless.setUnit(null);        
+        
         if (nonRecoverableExceptionThrown) {
             return observationCollections;
         }
@@ -110,7 +118,8 @@ public class CnfaicObservationRetriever implements ObservationRetriever {
                                     .convertTo(Double.valueOf(matcher.group(AIR_TEMPERATURE_INDEX)),
                                             SI.DEGREE_CELSIUS));
     				} else if (phenomenon.getId().equals(relativeHumidityPhenomenon.getId())) {
-    				    valueString = matcher.group(RELATIVE_HUMIDITY_INDEX);				    
+    				    valueString = matcher.group(RELATIVE_HUMIDITY_INDEX);
+    				    observationCollection.setPhenomenon(relativeHumidityUnitless);
     				} else if (phenomenon.getId().equals(windSpeedPhenomenon.getId())) {
                         valueString = Double.toString(UnitResolver.instance().resolveUnit("miles per hour")
                                 .convertTo(Double.valueOf(matcher.group(WIND_SPEED_INDEX)),
