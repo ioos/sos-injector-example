@@ -1,0 +1,9 @@
+Dockerfile
+.dockerignore
+target
+.project
+.settings
+.classpath
+.git
+.gitignore
+*.swp

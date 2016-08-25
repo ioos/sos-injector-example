@@ -25,6 +25,11 @@ public class CnfaicUpdateApp {
 
         String sosUrl = args[0];
         String authorizationToken = args.length >= 2 ? args[1] : null;
+
+        LOGGER.info("Using SOS URL: " + sosUrl);
+        if (authorizationToken != null) {
+            LOGGER.info("Using authorization token: " + authorizationToken);
+        }
         
         PublisherInfo publisherInfo = new PublisherInfo();
         publisherInfo.setCode("example");
