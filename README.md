@@ -1,10 +1,43 @@
-sos-injector-example
-====================
+# sos-injector-example
 
 Example usage of the sos-injector
 
-Creating a Custom Source SOS Injector
--------------------------------------
+## Run the example
+
+To run this example, download the `sos-injector-example.jar` from the
+[GitHub releases page](https://github.com/ioos/sos-injector-example/releases)
+(or compile this project using Maven) and then run the jar against a running
+i52n-sos with `InsertSensor` and `InsertObservation` operations enabled for your IP.
+
+Example:
+
+```shell
+java -jar sos-injector-example.jar http://localhost:8080/i52n-sos
+```
+
+If you have configured your i52n-sos to require an authorization token for transactional
+requests, you can specify the token as a second argument.
+
+Example:
+
+```shell
+java -jar sos-injector-example.jar http://localhost:8080/i52n-sos F6tfXAnPoy
+```
+
+## Run the example with Docker
+
+The example can also be run with Docker using an image on the IOOS Docker hub.
+Be aware that you __cannot__ specify `localhost` as the target i52n-sos hostname
+when running in Docker, as `localhost` will refer to the container's hostname.
+
+Example:
+
+```
+docker run --rm ioos/sos-injector-example http://10.0.0.23:8080/i52n-sos
+```
+
+## Creating a Custom Source SOS Injector
+
 The source code provides an example (referenced below) to explain how to implement a custom source SOS injector.
 The user needs to provide the URL for their own 52 North SOS. This example is located in the source at com.axiomalaska.sos.cnfaic.
 To run the example use the following code:
