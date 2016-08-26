@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/ioos/sos-injector-example.svg?branch=master)](https://travis-ci.org/ioos/sos-injector-example)
+
 # sos-injector-example
 
 Example usage of the sos-injector
