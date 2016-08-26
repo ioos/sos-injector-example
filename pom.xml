@@ -4,7 +4,7 @@
 
   <groupId>com.axiomalaska</groupId>
   <artifactId>sos-injector-example</artifactId>
-  <version>1.7.5-SNAPSHOT</version>
+  <version>1.7.5</version>
   <packaging>jar</packaging>
 
   <name>sos-injector-example</name>
@@ -103,7 +103,7 @@
     <connection>scm:git:git@github.com:ioos/sos-injector-example.git</connection>
     <url>scm:git:git@github.com:ioos/sos-injector-example.git</url>
     <developerConnection>scm:git:git@github.com:ioos/sos-injector-example.git</developerConnection>
-    <tag>HEAD</tag>
+    <tag>1.7.5</tag>
   </scm>
 
   <repositories>
